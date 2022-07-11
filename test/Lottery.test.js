@@ -13,5 +13,11 @@ beforeEach(async () => {
 
     lottery = await new web3.eth.Contract(JSON.parse(interface))
         .deploy({ data: bytecode })
-        .send({ from: account[0], gas: '1000000' });
+        .send({ from: accounts[0], gas: '1000000' });
+});
+
+describe('Lottery contract', () => {
+    it('deploys a contract', async () => {
+        assert.ok(lottery.options.address);
+    })
 })
